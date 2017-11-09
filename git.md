@@ -9,4 +9,7 @@
         branch 一个指向最后一次提交产生的commit对象的可变指针，由于commit对象包含指向父级提交的指针，因此通过一个branch指针便可追踪出一个提交记录链，就称之为分支，branch中的commit指针会随着新的提交不断改变，保持指向最新的commit
         HEAD head是一个指示当前仓库所处分支的一个文本文件，checkout指向一个新分支的实质是将HEAD中的内容修改为新分支名
 
+        git的整体目录可用如下图表示：
+        https://github.com/xiaoxipangren/vimlearn/raw/master/img/arch.png
+
     
