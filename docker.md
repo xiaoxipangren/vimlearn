@@ -26,4 +26,49 @@
         docker-machine start/stop/rm/create/env/ssh/scp
         docker node ls
         docker stack deploy -c composite.yml <app-name>
+    
+    2. Dockerfile 与 Image
+        
+        Dockerfile可类比makefile，Docker build 命令利用Dockerfile生成Image。常用的Dockerfile指令如下所示：
+        From 指定基镜像并初始化一个build状态。一个Dockerfile中可以出现多个From指令，以创建多个镜像。
+       
+       RUN 指令运行一个命令并在Image上增加一层，有两种形式：
+            shell form: RUN <command> ，将启动一个shell执行命令
+            exex form: RUN ["executable","param1","param2"] 直接运行可执行文件而非通过 shell
 
+        CMD 指令 一个Dockerfile中只能有一个CMD指令，目的是设置可执行的container提供默认的运行动作。有三种形式
+            execform: CMD ["exectable","param1","param2"]，不会调用shell
+            entrypoint: CMD ["param1","param2"]
+            shellform: CMD command param1 param2
+        
+        LABEL 指令以key=value的形式添加元数据
+
+        EXPOSE 指令指定contianer监听的端口
+
+        ENV 指令以<key> <value> 或者 key=value的形式定义环境变量
+
+        ADD 指令 向Image中拷贝文件，两种形式：
+            ADD <src>... <dest>
+            ADD ["src",...,"dest"] 适用于目录中包含空格
+
+        COPY 指令向container中拷贝文件，两种形式：
+            COPY <src>... <dest>
+            COPY ["<src>",... "<dest>"]
+        
+        ENTRYPOINT 指令配置一个container为可执行的，该指令会覆盖CMD指定的命令，两种形式：
+            execform:ENTRYPOINT ["exectable","param1","param2"]
+            shellform:ENTRYPOINT command param1 param2
+        
+        VOLUME 指令声明一个可以持有外部数据的挂载点。注意在dockerfile中不能指定host中的哪些目录能挂载到container内部，因为这样会将container与具体环境绑定，只能通过docker run 命令来指定要挂载的目录。
+
+        USER 指令指定运行RUN/CMD/ENTRYPOINT中的命令中所属的用户和组
+            USER user[:group] or USER uid[:gid]
+
+        WORKDIR 指令设定RUN/CMD/ENTRYPOINT/COPY/ADD等命令的启动目录或相对目录
+        
+        ARG 指令，声明用户可以在docker bulid命令中通过 --build-arg <argname>=<value>形式传入的参数，相当于定义了一个命名参数
+
+        ONBUILD 指令为一个base Image增加触发器功能，当一个子Image FROM base Image后，将以此执行ONBUILD中的指令。
+
+        SHELL 指令重写默认的shell，这将影响RUN/CMD/ENTRYPOINT指令的shellfomr，形式为：
+            SHELL ["executable","parameters"]
