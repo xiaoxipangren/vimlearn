@@ -10,4 +10,4 @@
         HEAD head是一个指示当前仓库所处分支的一个文本文件，checkout指向一个新分支的实质是将HEAD中的内容修改为新分支名
 
         git的整体目录可用如下图表示：
-        ![alt git](img/arch.png?raw=true "arch")
+        ![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510285912645&di=7f188a2bc73aaf0c36b142e9d1d04e64&imgtype=0&src=http%3A%2F%2Fimage.lxway.com%2Fupload%2Fd%2Fcc%2Fdccafadf1371c5b4abd90b4ad1375c22_thumb.jpg)
