@@ -15,6 +15,4 @@
     1.2 git对象模型与提交原理
         git是如何记录源代码的内容、层次结构（目录结构）的变化的呢，又是如何实现回退的呢？以及git中引入的stage中间态又有什么意义？
 
-        把一个git仓库拆分成工作目录、索引和对象库三个部分来看待。索引也是一个tree对象，在一个clean的仓库中，索引存储的blob指针记录以及与指针关联的路径和文件名信息与工作目录的物理组成是一致的，索引tree和当前branch 指针指向commit对象指向的tree是相同的，他们具有相同的blog记录。当修改文件内容后，git如何识别未staged的更改呢？原理是检查工作目录中文件的hash和索引tree具有相同文件名的blob hash是否相同，注意此时索引tree和提交tree还是相同的。执行git add后，git将根据工作目录中的新文件的hash值更新索引tree中的bolb指针记录，重新指向新的blob。这是工作目录和索引tree相同，而索引tree和提交tree不同，此时状态为未提交。执行git commit后，git将根据索引tree生成一个新的提交tree，同时生成一个新的commit对象，该commit对象指向新tree，并拥有一个指向父commit的指针，最后更新branch指针指向最新的commit。此后，工作目录、索引tree和对象库的内容又完全一致了。
-
-    
+        把一个git仓库拆分成工作目录、索引和对象库三个部分来看待。索引也是一个tree对象，在一个clean的仓库中，索引存储的blob指针记录以及与指针关联的路径和文件名信息与工作目录的物理组成是一致的，索引tree和当前branch 指针指向commit对象指向的tree是相同的，他们具有相同的blog记录。当修改文件内容后，git如何识别未staged的更改呢？原理是检查工作目录中文件的hash和索引tree具有相同文件名的blob hash是否相同，注意此时索引tree和提交tree还是相同的。执行git add后，git将根据工作目录中的新文件的hash值更新索引tree中的bolb指针记录，重新指向新的blob。这时工作目录和索引tree相同，而索引tree和提交tree不同，此时状态为未提交。执行git commit后，git将根据索引tree生成一个新的提交tree，同时生成一个新的commit对象，该commit对象指向新tree，并拥有一个指向父commit的指针，最后更新branch指针指向最新的commit。此后，工作目录、索引tree和对象库的内容又完全一致了。 
