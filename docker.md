@@ -59,7 +59,7 @@
             execform:ENTRYPOINT ["exectable","param1","param2"]
             shellform:ENTRYPOINT command param1 param2
         
-        VOLUME 指令声明一个可以持有外部数据的挂载点。注意在dockerfile中不能指定host中的哪些目录能挂载到container内部，因为这样会将container与具体环境绑定，只能通过docker run 命令来指定要挂载的目录。
+        VOLUME volume是一个存储在Host机器上由docker管理的特殊文件或目录，能够挂载到容器内部，实现容器数据的持久化和夸容器数据共享。
 
         USER 指令指定运行RUN/CMD/ENTRYPOINT中的命令中所属的用户和组
             USER user[:group] or USER uid[:gid]
@@ -72,3 +72,17 @@
 
         SHELL 指令重写默认的shell，这将影响RUN/CMD/ENTRYPOINT指令的shellfomr，形式为：
             SHELL ["executable","parameters"]
+
+    3.数据持久化
+        
+       volume 挂载由docker进程管理的数据目录到容器内部
+       
+       bind mount 挂在host上的物理目录到容器内部
+
+       tmpfs 挂载host或container中的内存块到容器上的挂载点
+            
+            
+    
+
+
+    
