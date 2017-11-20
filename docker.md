@@ -73,6 +73,10 @@
         SHELL 指令重写默认的shell，这将影响RUN/CMD/ENTRYPOINT指令的shellfomr，形式为：
             SHELL ["executable","parameters"]
 
+    *tips*
+        *1.将用户加入到docker组中实现普通用户的root级别docker操作*
+    
+    
     3.数据持久化
         
        volume 挂载由docker进程管理的数据目录到容器内部
