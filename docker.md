@@ -85,7 +85,13 @@
 
        tmpfs 挂载host或container中的内存块到容器上的挂载点
             
-            
+### Docker运行机制 ###      
+    1. container与进程管理
+        container在前台只能运行一个进程，如果该进程结束，container会自动停止运行。当然可以同时在一个container内运行多个进程，但要保证前台进程不会提前结束。
+    2. 同一个container运行多个service的方式
+        [docker offical doc](https://docs.docker.com/engine/admin/multi-service_container/) 
+        a.使用一个循环脚本
+        b.使用supervisord
     
 
 
