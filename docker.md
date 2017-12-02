@@ -92,7 +92,8 @@
         [docker offical doc](https://docs.docker.com/engine/admin/multi-service_container/) 
         a.使用一个循环脚本
         b.使用supervisord
+    3. docker exec 指令如果执行的是shell built-in指令，需要使用docker exec Container-ID bash -c "built-in command"    
     
-
+    4. docker exec -it container-id bash 可以启动一个交互式非登录shell
 
     
