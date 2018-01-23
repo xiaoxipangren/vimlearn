@@ -95,5 +95,6 @@
     3. docker exec 指令如果执行的是shell built-in指令，需要使用docker exec Container-ID bash -c "built-in command"    
     
     4. docker exec -it container-id bash 可以启动一个交互式非登录shell
+    5. 使用docker托管ftp服务器时，ftp客户端不能同时用docker托管，这是由ftp协议需要建立两个不同的连接分别进行命令和数据传递决定的。无论是被动还是主动模式。
 
     
