@@ -16,3 +16,22 @@
         使用一个@Configuration配置一个SpringContext，并通过@EnableConfigurationProperties注解导入2.1中定义的配置类，这样就将配置类注册到了IOC容器中，其他组件可以使用@Autowired注解注入并使用这些配置类。
     2.3 组件注册
         对于具有多个状态的组件，做好在@Configuration中使用@Bean进行注册，这样可以避免配置类在组件类中过多的使用。对于无状态的组件，可以直接使用@Component进行标注。
+
+
+3 Spring实现文件下载
+    3.1 直接方式
+        即将文件直接放置在spring的静态资源路径中，通过一个<a href="">　指向文件，那么浏览器会自动进行文件下载。
+    3.2 使用mvc相应请求
+        即返回 new ResponseEntity<ByteArrayResource>(new ByteArrayResource(data),headers, HttpStatus.OK)来实现
+
+
+4.Spring jpa审计功能
+    @CreatedDate @CreatedBy @LastModified等字段修饰实体字段时可以在实体被创建或者更新时自动赋值。为达到这种功能需要如下设置：
+    a. 实体类加上@EntityListeners(AuditingEntityListener.class)注解
+    b. app启动类加上EnableAuditing注解
+    c. 实现AuditorAware和DatetimeService接口以提供审计者和时间属性
+
+5.Spring Security
+    5.1Spring Filter的一般流程
+        首先Filter会从HttpRequest中提取Principal和Credential组成一个AuthenticationToken，然后调用AuthenticationManger去认证该Token，而AuthenticationManager又会将认证逻辑委托给AuthenticationProvider进行处理，后者一般会从token中提取principal，并根据principal从系统资源中查询其credential信息，最后和token中的credential信息进行比对，如果两者相同则认证通过，否者失败。
+
