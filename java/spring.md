@@ -34,4 +34,15 @@
 5.Spring Security
     5.1Spring Filter的一般流程
         首先Filter会从HttpRequest中提取Principal和Credential组成一个AuthenticationToken，然后调用AuthenticationManger去认证该Token，而AuthenticationManager又会将认证逻辑委托给AuthenticationProvider进行处理，后者一般会从token中提取principal，并根据principal从系统资源中查询其credential信息，最后和token中的credential信息进行比对，如果两者相同则认证通过，否者失败。
-
+6. @RequestParam @RequestBody异同
+    5.1 @RequestParam
+        @RequestParam除了用于primitive类型外，还可以用于POJO，假设@RequestParam(value="data")Pojo pojo，那么要求传输过来的json有如下格式：
+            {
+                data:{
+                    
+                }
+            }
+也就是说，只要json层级结构满足映射要求即可。甚至，可以直接去掉@RequestParam直接绑定 Pojo pojo，那么json如下：
+            {
+            }
+就无需多一层结构。
