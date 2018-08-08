@@ -46,3 +46,6 @@
             {
             }
 就无需多一层结构。
+
+7.跨域自定义header
+    ajax在跨域请求的情况下无法读取自定义header，需要在服务器端开启这些自定义的header才能读取成功，对于spring来说，需CorsRegistry．exposedHeaders({headers})来进行设置
