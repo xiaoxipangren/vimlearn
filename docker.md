@@ -98,3 +98,7 @@
     5. 使用docker托管ftp服务器时，ftp客户端不能同时用docker托管，这是由ftp协议需要建立两个不同的连接分别进行命令和数据传递决定的。无论是被动还是主动模式。
 
     
+### docker start
+    1.将当前用户加入到docker组中可以避免使用sudo
+    2.docker阿里云镜像加速参https://cr.console.aliyun.com/cn-qingdao/mirrors
+    3.pull 阿里云上的docker镜像时需要登录docker login --username=xiaoxipangren registry.cn-hangzhou.aliyuncs.com
